@@ -1,0 +1,256 @@
+% The header contains the main properties of the article.
+\documentclass[12pt,a4paper]{article} % 12 Punkte Schrift, A4 Papier
+\usepackage[utf8]{inputenc} 
+%\usepackage[ngerman]{babel} % Use if you want to write in German. 
+\usepackage[english]{babel} % Use if you want to write in English
+
+\parindent=0cm
+\parskip=0.3cm
+\linespread{1.5}
+
+
+
+
+% some standard packages.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{mhchem}
+
+
+
+
+% Information for the title page
+\title{Example for a Report}
+\date{\today}
+\author{Suzy Sample}
+
+
+
+
+% The Beginning of the document
+\begin{document}
+
+
+
+\maketitle % Hier wird die Titelseite mit den obigen Informationen eingefügt. Falls man eine "kunstvollere" Titelseite mit einem anderen Programm erstellen möchte, kann man sie hier einfügen. Dafür muss man die Titelseite im gleichen Verzeichnis (z.B. mit dem Namen TitelseiteMA2018.pdf) im pdf Format ablegen und mit dem Befehl
+% \includepdf{TitelseiteMA2018}
+% wird sie dann eingefügt.
+
+
+
+
+
+
+
+
+
+
+\newpage 
+
+\tableofcontents % This automatically generates a table of contents based on your sections and subsections. Changes show after two compilations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+% Basic structure
+\section{Introduction}
+\blindtext
+
+% Mit einer Leerzeile wird ein neuer Abschnitt beognnen
+To cite  a source \texttt{cite} use the \cite{buch1} command. 
+
+
+\newpage
+
+
+
+\section{Main Part}
+\subsection{Figures}
+
+Here a first figure could be added.
+
+\begin{figure}[h] % Die "figure" Umgebung 
+\centering % Damit wird das Bild zentriert
+\includegraphics[width=0.5\textwidth]{star_wars.jpeg} % Hier wird ein Bild eingefügt, das im selben Verzeichnis abgelegt wurde. Es wird so vergrössert/verkleinert, dass es auf die halbe Textbreite passt.
+\caption{A first image \cite{sw16}}
+\end{figure}
+
+\subsection{Lists}
+
+Regard the following points:
+
+\begin{itemize}
+\item first entryfirst entryfirst entryfirst entryfirst entryfirst entryfirst entry
+\item second entry second entry second entry second entry second entry second entry second entry second entry second entry 
+
+\item third entry third entry third entry third entry third entry third entry third entry third entry 
+\end{itemize}
+
+Sometimes we want to number a list. This can be done with \verb|\enumerate|:
+
+\begin{enumerate}
+\item first entryfirst entryfirst entryfirst entryfirst entryfirst entryfirst entryfirst entry
+\item second entry second entry second entry second entry second entry second entry second entry 
+\item third entry third entry third entry third entry third entry third entry third entry third entry 
+\end{enumerate}
+
+\subsection{Mathematical Formulae}
+Mathematical formulae can be written inline as with the Pythagorean theorem $a^2+b^2=c^2$. But they can also be written in a special environment as with the sine rule
+or the formula for a geometric series.
+ \[
+a_1+a_1\cdot q+a_1\cdot q^2+\ldots + a_1 \cdot q^{n-1}= a_1 \cdot\frac{q^n-1}{q-1}.
+\]
+
+
+\subsection{Tables}
+
+Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table Let's try a table 
+
+\begin{table}[h]
+\begin{center}
+\caption{Example Table}
+\begin{tabular}{|c|c|c|c|}
+\hline
+    row number & Text & Formula & Number \\ \hline
+    one & Hello & $a^2$ & 3  \\
+    two & Peter & $2b-\sin(\alpha)$ & 13\\
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+And a table with  \textcolor{blue}{colorful} text: 
+\begin{table}[h]
+\begin{center}
+\caption{Colorful Table}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\color{red}{row number} &  \color{blue}{Text} & \color{green}{Formula} & Number \\ \hline
+    one & Hello & $a^2$ & 3  \\
+    two & Peter & $2b-\sin(\alpha)$ & 13\\
+    \hline
+\end{tabular}
+\caption{Source: book?}
+	\label{table:farbig}
+\end{center}
+\end{table}
+
+
+
+\subsection{Multiple Coulmns}
+
+\begin{multicols}{2}
+\blindtext
+\end{multicols}
+
+
+
+
+\subsection{Chemical Formulas}
+We can also write chemical formulas. The best option is to use the package mhchem:
+\begin{itemize}
+	\item \ce{H2O}
+	\item \ce{H3O+}
+	\item \ce{^{227}_{90}Th+}
+	\item \ce{A-B=C#D}
+	\item  \ce{CO2 + C -> 2CO}
+	\item \ce{CO2 + C <=> 2CO}
+	\item \ce{CO2 + C <=>> 2CO}
+	\item \ce{CO2 + C ->T[above][below] 2CO}
+\end{itemize}
+More information can be found under \url{http://mirrors.ctan.org/macros/latex/contrib/mhchem/mhchem.pdf} (22.5.2018).
+
+
+
+\section{Conclusions}
+\newpage
+
+
+
+
+\appendix
+\section{Appendix}
+\newpage
+
+
+
+
+
+\section{List of Figures}
+\listoffigures
+
+
+
+\newpage
+\section{References}
+
+\begin{thebibliography}{1} 
+
+
+
+\bibitem{buch1} Surname, Name {\em Title of first book} year: publisher.
+
+\bibitem{buch2} Surname, Name {\em Title of second book} year: publisher.
+
+\bibitem{sw16} Website: \url{{http://img.lum.dolimg.com/v1/images/tfa_poster_wide_header_adb92fa0.jpeg?region=61%2C271%2C1937%2C1089&width=600}} 
+\\(last checked x 4.1.2016)
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

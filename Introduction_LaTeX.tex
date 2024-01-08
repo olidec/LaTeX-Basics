@@ -1,0 +1,421 @@
+% The header contains the main properties of the article.
+\documentclass[12pt,a4paper]{article} % 12 Punkte Schrift, A4 Papier
+\usepackage[utf8]{inputenc} 
+%\usepackage[ngerman]{babel} % Use if you want to write in German. 
+\usepackage[english]{babel} % Use if you want to write in English
+
+\parindent=0cm
+\parskip=0.3cm
+%\linespread{1.5}
+
+
+
+
+% some standard packages.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{blindtext}
+
+
+
+
+% Information for the title page
+\title{Introduction to \LaTeX}
+\date{\today}
+\author{Oliver De Capitani}
+
+
+
+
+% The Beginning of the document
+\begin{document}
+
+
+
+\maketitle % Hier wird die Titelseite mit den obigen Informationen eingefügt. Falls man eine "kunstvollere" Titelseite mit einem anderen Programm erstellen möchte, kann man sie hier einfügen. Dafür muss man die Titelseite im gleichen Verzeichnis (z.B. mit dem Namen TitelseiteMA2016.pdf) im pdf Format ablegen und mit dem Befehl
+% \includepdf{TitelseiteMA2016}
+% wird sie dann eingefügt.
+
+
+
+
+
+
+
+
+
+
+\newpage % Eine neue Seite wird begonnen...
+\tableofcontents % Hier wird automatisch das Inhaltsverzeichnis eingefügt. Achtung: Änderungen werden erst nach dem zweiten kompilieren sichtbar.
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+% Die Grundstruktur einer Arbeit:
+\section{Introduction}
+
+\LaTeX\  is a commonly used science, technology, engineering and mathematical (STEM) typesetting program. It is designed to allow writers to focus on content while producing high quality output. Unlike Microsoft Word or Apple Pages, however, it is not a what-you-see is what you get (WYSIWYG) interface, and therefore has a steeper learning curve than some of the more commonly available writing tools. The program is available on a wide variety of platforms, including Windows, Mac OSX, Unix and Linux. The installation requires two parts: The code for typesetting \LaTeX\  and a text editor to write \LaTeX\ documents.
+
+\LaTeX\  can be found under
+\begin{itemize}
+\item \url{http://www.tug.org/mactex/} (MACOS), 
+\item \url{https://miktex.org/download} (Windows) or
+\item \url{https://ctan.org/?lang=en} (Linux/Unix). 
+\end{itemize} 
+
+For an editor I would recommend using Texmaker (\url{http://www.xm1math.net/texmaker/index.html}), since it is free, open source and available for all platforms.
+
+Advantages of \LaTeX\  are a clean, crisp output while allowing the writer to focus on writing and content as opposed to appearance of the final document. Students are highly encouraged to focus on writing the entire document first, then coming back later to tweak the stylization and appearance of their final product.
+
+
+
+
+
+\section{The Basics}
+
+Paragraphs are delimited by having a space between lines in your code. You can also start on a new line without a new paragraph using double back slashes “{\verb|\\|}”. If you don’t put a blank line between your paragraphs, \LaTeX\  treats the lines as if they were part of the same paragraph.  
+
+In similar fashion, you can use the “\verb|\pagebreak|” command to start a new page, and the “\verb|\noindent|” command to avoid indenting the current line.
+Standard LATEX is just text with some extra instructions thrown in. Most of these instructions start with a backward slash “\verb|\|”, and arguments to those instructions are placed in curly brackets “\verb|{}|”. As an example, to put something in italics, we’ll use the \verb|\emph| instruction.
+
+The code “\verb|\emph{This is in italics.}|” produces the following output: \\
+\emph{This is in italics}.
+
+
+Other common typesetting instructions include:
+
+\begin{tabular}{ll}
+\verb|\textbf{argument}| & \textbf{Bold text} \\
+\verb|\textit{argument}| &  \textit{italic text} \\
+\verb|\underline{argument}| &  \underline{underlined text} \\
+\verb|\tiny{argument}| & \tiny{tiny text} \\
+\verb|\small{argument}| & \small{small text} \\ 
+\verb|\large{argument}| & \large{large text} \\
+\verb|\huge{argument}| & \huge{huge text}
+\end{tabular}
+
+Comments in LATEX are inserted into your code using the percentage sign (\verb|%|). Anything on a line following a percentage sign is ignored by the LaTeX engine. The following line would be ignored by the engine.
+
+\small{\verb|% This would be completely ignored and not show up on the printed page.|}
+
+
+
+
+
+
+\section{Document Structure}
+
+\subsection{Document Class}
+Building a \LaTeX\  document requires you to first define the type of document you want to create. This is handled by the \verb|\documentclass{argument}| command and is the first line in your input file. A vast majority of the documents you’ll be creating in this class will be articles, so the first line of your input file should generally read:
+\verb|\documentclass[11pt,a4paper]{article}|
+
+
+This tells \LaTeX\  that our document is an article, on a4 paper, and we want our standard font size to be 11 points.
+
+\subsection{Packages}
+\label{packages}
+
+Following the document class declaration, we need to tell \LaTeX\  what additional extensions, or packages, we’ll be using. Though we won’t need all of these in all our documents, the following are some packages that may come into play:
+
+\begin{tabular}{ll}
+\verb|\usepackage{hyperref}| & \verb|%Use hyperref package (for hyperlinks)| \\
+\verb|\usepackage{graphicx}| & \verb|%Use graphicx package (for images)| \\
+%\verb|\usepackage{float}| & \verb|%Use float package (place images more easily)| \\
+\verb|\usepackage{gensymb}| & \verb|%Use gensymb package (generic symbols)| \\
+\verb|\usepackage{amsmath}| & \verb|%Use amsmath package (optimize math formulas)| \\
+\verb|\usepackage{tikz}| & \verb|%Use tikz package (for creating graphics)| \\
+\verb|\usepackage{pgfplots}| & \verb|%Use pgfplots package (for creating graphics)| 
+\end{tabular}
+
+
+\subsection{Beginning and End of a Document}
+
+The “meat” of your document is placed between begin and end declarations. You begin the document with the \verb|\begin{document}| instruction, and end the document with the \verb|\end{document}| instruction. A very simple \LaTeX\  document, therefore, might look like:
+\begin{verbatim}
+\documentclass{article}
+\begin{document}
+Here is my text
+\end{document}
+\end{verbatim}
+
+
+\section{Document Structure}
+
+Articles are organized into sections and subsections. \LaTeX\  will automatically number the sections and sub-sections. If you don’t want a section or sub-section to be numbered, you’ll include an asterisk (\verb|*|) after the word section or subsection. As an example, I’ll place a sub-section titled “Section and Subsection Formatting” below using the command:
+
+\verb|\subsection{Section and Subsection Formatting}|
+
+
+\subsection{Section and Subsection Formatting}
+
+
+If I didn’t want that subsection to be numbered, I would have instead use the command:
+
+\verb|\subsection*{Section and Subsection Formatting}|
+
+
+
+\section{Math Expressions}
+Probably the biggest benefit of using \LaTeX\  to typeset your documents is its ability to render math equations quickly and neatly. For example, the famous equation $E = mc^2$ is very easy to show, as is something a bit more demanding
+such as $v=\frac{d}{t}$. The level of complexity \LaTeX\  can handle is quite astounding.
+ Even equations involving infinite sums such as $\sum_{n=1}^{\infty} 2^{-n}=1$ are handled with ease.
+ 
+\subsection{Inline Equations}
+
+Mathematical expressions which are in-line with text are surrounded by dollar sign (\verb|$|) symbols. A simple equation such as $\vec{F}=m\cdot \vec{a}$ can be placed inline using the code:
+
+\verb|$\vec{F}=m\cdot \vec{a}$|
+
+\subsection{Display Equations}
+Mathematical expressions which are to be placed on a new line (and typically centered) are called display equations and are enclosed by the symbols \verb|\[...\]|. So the same formula above written in display style would be written as
+\begin{verbatim}
+\[
+\vec{F}=m\cdot \vec{a}
+\]
+\end{verbatim}
+and would look as follows
+\[
+\vec{F}=m\cdot \vec{a}\ .
+\]
+
+\subsection{Typesetting Mathematical Formulas}
+The possibilities for typesetting mathematical formulas are endless. An overview of the possibilities can found in the "Not so Short Introduction to \LaTeX ", which can be found in your course folder.
+
+\section{Cross References and Hyperlinks}
+
+Cross references and hyperlinks are another strong suit of \LaTeX\ . First, I’d recommend using the \texttt{hyperref} package to simplify your work. With that package defined in your document preamble (see section \ref{packages}), you start by labeling a portion of the document with the \verb|\label{}| command, where the label you want to create for the reference is placed between the curly brackets. You can then later refer to that label with \verb|\ref{labelname}| command, where labelname is what you previously named that section.
+
+The cross-reference in the preceding paragraph, specifically “see section \ref{packages}”, is created by first having a line in the code at section \ref{packages} which states “\verb|\label{packages}|”. Then, to show the section, the text “\verb|\ref{packages}|” is used to generate the cross-reference. Note that for electronic documents in formats that permit the capability, such as PDF, the cross-references are hyperlinks taking you to that section of the document.
+
+
+\subsection{Hyperlinks}
+
+Hyperlinks, or links to web addresses, are also supported in \LaTeX\ . A simple url can be inserted in a document with the \verb|\url{}| command, where the web address, including the \texttt{http://} portion, is placed within the curly brackets. The web link \url{https://gym-muttenz.ch/} is created using the code \verb|\url{https://gym-muttenz.ch/}|. Note that the inserted url is an active link in a PDF document that supports the feature.
+
+You can even place a hyperlink to your e-mail address. A link to send an e-mail to my e-mail address would look like this in the text: \href{mailto:oliver.decapitani@sbl.ch}{oliver.decapitani@sbl.ch} and is created by the code 
+
+\verb|\href{mailto:oliver.decapitani@sbl.ch}{oliver.decapitani@sbl.ch}|.
+
+
+\section{Lists}
+
+
+There are three main types of lists you’ll be dealing with in your writing, numbered lists, bulleted lists, and descriptive lists.
+
+\subsection{Numbered Lists}
+
+Numbered lists are known in \LaTeX\  as enumerated lists. These are often used in the procedure section of a  report, or in the analysis section when answering specific assigned questions. You create an enumerated list using the \verb|\begin{enumerate}| command, as shown below.
+\begin{enumerate}
+\item Begin each enumerated list with a \verb|\begin{enumerate}| command.
+\item Add your list items using the \verb|\item| command.
+\item Don’t forget to end your list .
+\end{enumerate}
+The list above was created with the following code:
+\begin{verbatim}
+\begin{enumerate}
+\item Begin each enumerated list with a \begin{enumerate} command.
+\item Add your list items using the \item command.
+\item Don’t forget to end your list .
+\end{enumerate}
+\end{verbatim}
+
+\subsection{Bulleted Lists}
+
+Alternately, sometimes you want a bulleted list, known as an itemized list. These are common for lists of materials. Bulleted lists function in a similar fashion as enumerated lists.
+\begin{itemize}
+\item Begin each bulleted list with a \verb|\begin{itemize}| command.
+\item Add your list items using the \verb|\item| command.
+\item Don’t forget to end your list.
+\end{itemize}
+The list above was created with the following code:
+\begin{verbatim}
+\begin{itemize}
+\item Begin each bulleted list with a \begin{itemize} command.
+\item Add your list items using the \item command.
+\item Don’t forget to end your list.
+\end{itemize}
+\end{verbatim}
+
+
+\subsection{Description Lists}
+
+Description lists aren’t as common in lab reports, though you do see them in technical writing, as in a vocabulary section.
+\begin{description}
+\item[Bulleted Lists] Useful for lists of materials
+\item[Numbered Lists] Useful for procedures
+\item[Description Lists] Useful for vocabulary
+\end{description}
+This description list was created with the following code:
+\begin{verbatim}
+\begin{description}
+\item[Bulleted Lists] Useful for lists of materials
+\item[Numbered Lists] Useful for procedures
+\item[Description Lists] Useful for vocabulary
+\end{description}
+\end{verbatim}
+
+
+\section{Tables}
+
+
+Tables are created using the \emph{tabular} command. For best results, however, I’d recommend placing your entire table inside a \verb|{table}| environment. This allows you to center the table if you’d like, add a caption, a label, and in general, make it easier to reference your table elsewhere in your report. Columns in your table are separated by the ampersand symbol “\verb|&|” symbol. If you’d like a vertical separator between your columns, you place a vertical separator symbol
+“\texttt{|}” between your justification marks.
+
+\begin{table}[h]
+\centering
+\caption{Common Tabular Commands}
+\vspace {2mm}
+\label{JustTable}
+\begin{tabular}{|l|l|}
+\hline
+Code & Justification Type \\
+\hline
+l & justify left \\
+r & justify right \\
+c & justify center \\
+\verb|\hline| & horizontal separator \\
+$|$ & vertical separator\\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+The table above was created using the following code. 
+\begin{verbatim}
+\begin{table}[h]
+\centering
+\caption{Common Tabular Commands}
+\vspace {2mm}
+\label{JustTable}
+\begin{tabular}{|l|l|}
+\hline
+Code & Justification Type \\
+\hline
+l & justify left \\
+r & justify right \\
+c & justify center \\
+\hline & horizontal separator \\
+| & vertical separator\\
+\hline
+\end{tabular}
+\end{table}
+\end{verbatim}
+
+\section{Figures}
+
+Figures are created using the figure environment and the \verb|\includegraphics[ ]{}| command, where the size of your graphic is placed inside the square brackets, and the filename is placed inside the curly brackets. A \verb|[h]| modifier after the \verb|\begin{figure}| command tells \LaTeX\  to place the picture at that specific point in your document. It is also recommended that you use a \verb|\label| and \verb|\caption| command to properly format your figure. A properly inserted figure is shown below.
+
+\begin{figure}[h]
+\centering 
+\includegraphics[width=0.5\textwidth]{star_wars.jpeg} 
+\caption{A first image \cite{sw16}}
+\end{figure}
+
+\newpage
+This graphic was inserted using the following code:
+\begin{verbatim}
+\begin{figure}[h]
+\centering 
+\includegraphics[width=0.5\textwidth]{star_wars.jpeg} 
+\caption{A first image \cite{sw16}}
+\end{figure}
+\end{verbatim}
+
+
+\section{Citations}
+A major selling point for using \LaTeX\  is the easy with which it handles citations. The standard bibliography might be created using the code:
+\begin{verbatim}
+\begin{thebibliography}{1} 
+\bibitem{book1} Surname, Name {\em Title of first book} year: publisher.
+
+\bibitem{book2} Surname, Name {\em Title of second book} year: publisher.
+
+\bibitem{sw16} Website: \url{{http://img.lum.dolimg.com/v1/images/
+tfa_poster_wide_header_adb92fa0.jpeg?region=61%2C271%2C1937
+%2C1089&width=600}} \\
+(last checked x 4.1.2016)
+\end{thebibliography}
+\end{verbatim}
+in the appendix. 
+
+If we now want to cite the first book, we can do so using the command \verb|\cite{book1}| \cite{book1}. By default the reference will show up as a number in square brackets (this can be changed). If you use the \verb|hyperref| package clicking on this number will taje you to the corresponding bibliography entry. A second book \cite{book2} is also in the sample bibliography.
+
+
+
+
+\newpage
+
+\appendix % This starts the appendix. Sections are now labeled with letters instead of numbers.
+\section{Appendix}
+
+
+
+
+
+\section{List of Figures}
+\listoffigures
+
+
+
+\section{References}
+
+\begin{thebibliography}{1} 
+\bibitem{book1} Surname, Name {\em Title of first book} year: publisher.
+
+\bibitem{book2} Surname, Name {\em Title of second book} year: publisher.
+
+\bibitem{sw16} Website: \url{{http://img.lum.dolimg.com/v1/images/tfa_poster_wide_header_adb92fa0.jpeg?region=61%2C271%2C1937%2C1089&width=600}} 
+\\(last checked 4.1.2016)
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
