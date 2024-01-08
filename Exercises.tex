@@ -1,0 +1,72 @@
+% The header contains the main properties of the article.
+\documentclass[12pt,a4paper]{article} % 12 Punkte Schrift, A4 Papier
+\usepackage[utf8]{inputenc} 
+%\usepackage[ngerman]{babel} % Use if you want to write in German. 
+\usepackage[english]{babel} % Use if you want to write in English
+
+\parindent=0cm
+\parskip=0.3cm
+\linespread{1.5}
+
+
+
+
+% some standard packages.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{mhchem}
+\usepackage{chemfig}
+
+
+
+
+% Information for the title page
+\title{Example for a Report}
+\date{\today}
+\author{Suzy Sample}
+
+
+
+
+% The Beginning of the document
+\begin{document}
+
+
+\section*{Exercises}
+\begin{enumerate}
+\item Copy all files in the 'prep' folder to your personal documents folder.
+\item Open the file "Report\_Template.tex" with texmaker and compile twice (Quick Build).
+\item Add new sections (\verb|\section{...}|), subsections (\verb|\subsection{...}|) and subsubsections (\verb|\subsubsection{...}|). 
+\item Add a new section with a star (\verb|\section*{...}|). What does the star do?
+\item 	In the section on mathematical forumulae add the formula for the area of a circle, the cosine rule 
+	\begin{align*}
+		c^2 &= a^2 + b^2 - 2 \cdot  a \cdot  b \cdot  \cos (\gamma)
+	\end{align*}
+	and Newton's Law of Gravity
+	\begin{align*}
+		F &= \Gamma \cdot  \frac{\mu_1 \cdot  \mu_2}{\rho^2}
+	\end{align*}
+	inline  (\texttt{\$\dots\$}) and in a separate ennvironment (\texttt{\textbackslash[\ldots\textbackslash]}).
+	\item Add more colorful tables to the section on tables.
+	\item Add more images in the section on figures. Use \texttt{width=} and \texttt{height=} to change the size of your images.
+	\item Add a footnote.
+	\item Add a citation.
+	\item Add an item to the bibliography.
+	\item Add the chemical formula
+		\begin{center}
+		\ce{SO3 + H2SO4 <=> H2S2O7 <=> HSO3+ + HSO4-}
+	\end{center}
+	\item Add the chemfig package in the preamble then write the structure formula for propane to the chemical formula section:
+		\begin{center}
+		\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-H}
+	\end{center}
+\end{enumerate}
+
+
+
+
+\end{document}
